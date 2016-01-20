@@ -8,22 +8,20 @@
 
     <name>petclinic</name>
     <packaging>war</packaging>
-    
-    <distributionManagement>
-        <!-- Publish the versioned releases here -->
+    <!-- added and then commendted by SREE -->
+    <!-- distributionManagement>
+        
          <repository>
           <id>admin</id>
           <name>admin</name>
           <url>http://172.31.5.65:8081/nexus/content/repositories/releases/built_artifacts</url>
          </repository>
-
-         <!-- Publish the versioned releases here -->
          <snapshotRepository>
           <id>admin</id>
           <name>admin</name>
           <url>http://172.31.5.65:8081/nexus/content/repositories/snapshots/built_artifacts/</url>
          </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement -->
     
     <properties>
 
@@ -405,8 +403,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Added by Sree -->
-            <plugin>
+            <!-- Added and then commendted by Sree -->
+            <!--plugin>
               <groupId>org.sonatype.plugins</groupId>
               <artifactId>nexus-staging-maven-plugin</artifactId>
         	  <version>1.6.6</version>
@@ -421,10 +419,10 @@
               </executions>
               <configuration>
                 <serverId>admin</serverId>
-                <nexusUrl>http://172.31.5.65:8081/nexus/</nexusUrl>
+                <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
                 <skipStaging>true</skipStaging>
               </configuration>
-            </plugin>
+            </plugin -->
             
         </plugins>
     </build>
