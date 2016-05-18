@@ -1,53 +1,20 @@
-#!groovy
-
-stage 'Dev'
 node {
-    checkout scm
-    mvn 'clean package'
-    dir('target') {stash name: 'war', includes: 'x.war'}
-}
+   // Mark the code checkout 'stage'....
+   stage 'Checkout'
 
-stage 'QA'
-parallel(longerTests: {
-    runTests(30)
-}, quickerTests: {
-    runTests(20)
-})
+   // Get some code from a GitHub repository
+   git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
 
-stage name: 'Staging', concurrency: 1
-node {
-    deploy 'staging'
-}
+   // Get the maven tool.
+   // ** NOTE: This 'M3' maven tool must be configured
+   // **       in the global configuration.           
+   def mvnHome = tool 'Maven'
 
-input message: "Does staging look good?"
-try {
-    checkpoint('Before production')
-} catch (NoSuchMethodError _) {
-    echo 'Checkpoint feature available in CloudBees Jenkins Enterprise.'
-}
+   // Mark the code build 'stage'....
+   stage 'Build'
+   // Run the maven build
+   sh "${mvnHome}/bin/mvn clean install"
+   
+   ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '--extra-vars warfile=$warpath', installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
 
-stage name: 'Production', concurrency: 1
-node {
-    echo 'Production server looks to be alive'
-    deploy 'production'
-    echo "Deployed to production"
-}
-
-def mvn(args) {
-    sh "${tool 'Maven'}/bin/mvn ${args}"
-}
-
-def runTests(duration) {
-    node {
-        sh "sleep ${duration}"
-        }
-    }
-
-def deploy(id) {
-    unstash 'war'
-    sh "cp x.war /tmp/${id}.war"
-}
-
-def undeploy(id) {
-    sh "rm /tmp/${id}.war"
 }
