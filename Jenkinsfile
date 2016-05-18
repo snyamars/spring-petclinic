@@ -18,6 +18,6 @@ node {
    def fileName = '/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war'
    echo "$fileName"
  
-  ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '--extra-vars warfile=$fileName', installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
+  ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '--extra-vars warfile="$fileName"', installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
 
 }
