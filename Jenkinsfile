@@ -16,7 +16,7 @@ node {
    sh "${mvnHome}/bin/mvn clean install"
    def list = []
    def fileName = '/var/jenkins_home/jobs/${JOB_NAME}/workspace/Pipe1/master/target/petclinic.war'
-   echo $fileName
+   echo '$fileName'
  
   ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '--extra-vars warfile=$fileName', installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
 
