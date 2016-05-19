@@ -13,11 +13,11 @@ node {
    // Mark the code build 'stage'....
    stage 'Build'
    // Run the maven build
-   sh "${mvnHome}/bin/mvn clean install"
+   //sh "${mvnHome}/bin/mvn clean install"
   
-   def fileName = '/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war'
+   def fileName = "/var/lib/jenkins/workspace/'${env.JOB_NAME}'/target/petclinic.war"
    echo "$fileName"
  
-  ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '--extra-vars warfile="$fileName"', installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
+  ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '--extra-vars warfile=$fileName', installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
 
 }
