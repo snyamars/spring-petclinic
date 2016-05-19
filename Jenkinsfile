@@ -26,7 +26,7 @@ node {
   node {
        echo 'Staging server looks to be alive'
       deploy 'Staging'
-      echo "Deployed to Staging"
+      echo "Deployed to Staging done"
    }
 
 def deploy(id) {
