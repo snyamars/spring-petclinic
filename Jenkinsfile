@@ -16,14 +16,14 @@ node {
    // Mark the code build 'stage'....
    stage 'Build'
    // Run the maven build
-   sh "${mvnHome}/bin/mvn clean install"
+   //sh "${mvnHome}/bin/mvn clean install"
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
  
   //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "--extra-vars warfile=${fileName}", installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
   //step([$class: 'AnsiblePlaybookBuilder', additionalParameters: "warfile=${fileName} target=52.91.71.245", ansibleName: 'ansible', credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', inventory: [$class: 'InventoryContent', content: '', dynamic: false], limit: '', playbook: '/home/ubuntu/JavaStack/site.yml', skippedTags: '', startAtTask: '', sudoUser: '', tags: ''])
-  ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '-i "52.91.71.245,"  --extra-vars "warfile=${fileName} target=52.91.71.245"', installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
+  ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '-i "52.91.71.245,"  --extra-vars warfile=${fileName} target=52.91.71.245', installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
 
 }
 
