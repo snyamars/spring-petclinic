@@ -22,7 +22,7 @@ node {
    echo "$fileName"
  
   //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "--extra-vars warfile=${fileName}", installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
-  step([$class: 'AnsiblePlaybookBuilder', additionalParameters: '"warfile=/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war target=52.91.71.245"', ansibleName: 'ansible', credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', inventory: [$class: 'InventoryContent', content: '', dynamic: false], limit: '', playbook: '/home/ubuntu/JavaStack/site.yml', skippedTags: '', startAtTask: '', sudoUser: '', tags: ''])
+  step([$class: 'AnsiblePlaybookBuilder', additionalParameters: "warfile=${fileName} target=52.91.71.245", ansibleName: 'ansible', credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', inventory: [$class: 'InventoryContent', content: '', dynamic: false], limit: '', playbook: '/home/ubuntu/JavaStack/site.yml', skippedTags: '', startAtTask: '', sudoUser: '', tags: ''])
 }
 
  input message: "Does staging look good?"
