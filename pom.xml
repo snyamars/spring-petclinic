@@ -11,13 +11,13 @@
     <!-- added and then commendted by SREE -->
     <distributionManagement>
          <repository>
-          <id>admin</id>
-          <name>admin</name>
+          <id>nexus</id>
+          <name>Repository</name>
           <url>http://54.175.40.228:8081/nexus/content/repositories/releases/built_artifacts</url>
          </repository>
          <snapshotRepository>
-          <id>admin</id>
-          <name>admin</name>
+          <id>nexus</id>
+          <name>Repository</name>
           <url>http://54.175.40.228:8081/nexus/content/repositories/snapshots/built_artifacts/</url>
          </snapshotRepository>
     </distributionManagement>
