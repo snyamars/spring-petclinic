@@ -15,6 +15,8 @@ node {
 
    // Mark the code build 'stage'....
    stage 'Build'
+   //set the version
+   sh "${mvnHome}/bin/mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER}"
    // Run the maven build
    sh "${mvnHome}/bin/mvn clean deploy"
   
