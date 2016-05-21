@@ -8,7 +8,7 @@
 
     <name>petclinic</name>
     <packaging>war</packaging>
-    <!-- added and then commendted by SREE -->
+    <!-- added and uncommented by SREE May 21 2016 -->
     <distributionManagement>
          <repository>
           <id>nexus</id>
@@ -418,7 +418,6 @@
               </executions>
             <configuration>
               <preparationGoals>release</preparationGoals>
-              <tagNameFormat>v@{project.version}</tagNameFormat>
             </configuration>
             </plugin>
             <!--plugin>
