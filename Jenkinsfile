@@ -19,7 +19,7 @@ node {
    sh "${mvnHome}/bin/mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER}"
    // Run the maven build
    sh "${mvnHome}/bin/mvn clean deploy"
-   sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
+   //sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
