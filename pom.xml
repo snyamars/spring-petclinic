@@ -8,7 +8,7 @@
 
     <name>petclinic</name>
     <packaging>war</packaging>
-    <!-- added and commented by SREE May 21 2016 for gitflow test
+    <!-- added and commented by SREE May 21 2016 for gitflow test -->
     <distributionManagement>
          <repository>
           <id>nexus</id>
@@ -20,7 +20,7 @@
           <name>Repository</name>
           <url>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts/</url>
          </snapshotRepository>
-    </distributionManagement -->
+    </distributionManagement>
     
     <properties>
 
@@ -439,7 +439,7 @@
                 <skipStaging>true</skipStaging>
               </configuration>
             </plugin -->
-            <!--added by Sree 21 May 2016 -->
+            <!--added by Sree 21 May 2016 Gitflow test--
             <plugin>
                 <groupId>com.e-gineering</groupId>
                 <artifactId>gitflow-helper-maven-plugin</artifactId>
@@ -448,12 +448,12 @@
                 <configuration>
                     <!-- These repository definitions expect id::layout::url::unique, for example
                          release::default::https://some.server.path/content/repositories/test-releases::false
-                    -->
+                    --
                     <releaseDeploymentRepository>releases::default::>http://54.85.168.201:8081/nexus/content/repositories/releases/built_artifacts::false</releaseDeploymentRepository>
                     <stageDeploymentRepository>stage::default::>http://54.85.168.201:8081/nexus/content/repositories/stage/built_artifacts::false</stageDeploymentRepository>
                     <snapshotDeploymentRepository>snapshots::default::>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts::true</snapshotDeploymentRepository>
                     <!-- The plugin will read the git branch ang git url by resolving these properties at run-time -->
-                    <!-- gitBranchProperty -->
+                    <!-- gitBranchProperty --
                 </configuration>
                 <executions>
                     <execution>
