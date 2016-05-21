@@ -418,6 +418,7 @@
               </executions>
             <configuration>
               <preparationGoals>release</preparationGoals>
+              <tagNameFormat>v@{project.version}</tagNameFormat>
             </configuration>
             </plugin>
             <!--plugin>
