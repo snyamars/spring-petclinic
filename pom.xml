@@ -13,12 +13,12 @@
          <repository>
           <id>nexus</id>
           <name>Repository</name>
-          <url>http://54.175.40.228:8081/nexus/content/repositories/releases/built_artifacts</url>
+          <url>http://54.85.168.201:8081/nexus/content/repositories/releases/built_artifacts</url>
          </repository>
          <snapshotRepository>
           <id>nexus</id>
           <name>Repository</name>
-          <url>http://54.175.40.228:8081/nexus/content/repositories/snapshots/built_artifacts/</url>
+          <url>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts/</url>
          </snapshotRepository>
     </distributionManagement>
     
