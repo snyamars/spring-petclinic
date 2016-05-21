@@ -40,5 +40,5 @@ def deploy(id) {
     //unstash 'war'
     def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
      echo "$fileName"
-    sh "cp ${fileName} /tmp/${id}.war"
+    sh "cp ${fileName} /tmp/${id}_${env.JOB_NAME}.war"
 }
