@@ -16,7 +16,7 @@ node {
    // Mark the code build 'stage'....
    stage 'Build'
    // Run the maven build
-   sh "${mvnHome}/bin/mvn clean install"
+  // sh "${mvnHome}/bin/mvn clean install"
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
@@ -40,6 +40,6 @@ def deploy(id) {
     //unstash 'war'
     def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
      echo "$fileName"
-    sh "cp ${fileName} /tmp/petclinic.war"
+    //sh "cp ${fileName} /tmp/petclinic.war"
     
 }
