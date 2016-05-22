@@ -447,15 +447,10 @@
                 <version>1.2.5</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <!-- These repository definitions expect id::layout::url::unique, for example
-                         release::default::https://some.server.path/content/repositories/test-releases::false
-                    -->
-                    <!-- releaseDeploymentRepository>releases::default::>http://54.85.168.201:8081/nexus/content/repositories/releases/built_artifacts::false</releaseDeploymentRepository>
+                    <releaseDeploymentRepository>releases::default::>http://54.85.168.201:8081/nexus/content/repositories/releases/built_artifacts::false</releaseDeploymentRepository>
                     <stageDeploymentRepository>stage::default::>http://54.85.168.201:8081/nexus/content/repositories/stage/built_artifacts::false</stageDeploymentRepository>
-                    <snapshotDeploymentRepository>snapshots::default::>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts::true</snapshotDeploymentRepository -->
-                    <!-- The plugin will read the git branch ang git url by resolving these properties at run-time -->
-                    <!-- gitBranchProperty -->
-                    <!-- tag>${project.artifactId}-${project.version}</tag>
+                    <snapshotDeploymentRepository>snapshots::default::>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts::true</snapshotDeploymentRepository>
+                    <tag>${project.artifactId}-${project.version}</tag>
                 </configuration>
                 <executions>
                     <execution>
