@@ -454,6 +454,7 @@
                     <snapshotDeploymentRepository>snapshots::default::>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts::true</snapshotDeploymentRepository>
                     <!-- The plugin will read the git branch ang git url by resolving these properties at run-time -->
                     <!-- gitBranchProperty -->
+                    <tag>${project.artifactId}-${project.version}</tag>
                 </configuration>
                 <executions>
                     <execution>
