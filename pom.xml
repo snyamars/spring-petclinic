@@ -403,7 +403,7 @@
                 </executions>
             </plugin>
             <!-- Added and then commendted by Sree -->
-            <!-- plugin>
+            <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-release-plugin</artifactId>
             <version>2.5.3</version>
@@ -419,7 +419,7 @@
             <configuration>
               <preparationGoals>release</preparationGoals>
             </configuration>
-            </plugin -->
+            </plugin>
             <!-- addition ended by Sree -->
             <!-- plugin>
               <groupId>org.sonatype.plugins</groupId>
@@ -441,7 +441,7 @@
               </configuration>
             </plugin -->
             <!-- added by Sree 22 May 2016 Gitflow test -->
-            <plugin>
+            <!-- plugin>
                 <groupId>com.e-gineering</groupId>
                 <artifactId>gitflow-helper-maven-plugin</artifactId>
                 <version>1.2.5</version>
@@ -450,12 +450,12 @@
                     <!-- These repository definitions expect id::layout::url::unique, for example
                          release::default::https://some.server.path/content/repositories/test-releases::false
                     -->
-                    <releaseDeploymentRepository>releases::default::>http://54.85.168.201:8081/nexus/content/repositories/releases/built_artifacts::false</releaseDeploymentRepository>
+                    <!-- releaseDeploymentRepository>releases::default::>http://54.85.168.201:8081/nexus/content/repositories/releases/built_artifacts::false</releaseDeploymentRepository>
                     <stageDeploymentRepository>stage::default::>http://54.85.168.201:8081/nexus/content/repositories/stage/built_artifacts::false</stageDeploymentRepository>
-                    <snapshotDeploymentRepository>snapshots::default::>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts::true</snapshotDeploymentRepository>
+                    <snapshotDeploymentRepository>snapshots::default::>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts::true</snapshotDeploymentRepository -->
                     <!-- The plugin will read the git branch ang git url by resolving these properties at run-time -->
                     <!-- gitBranchProperty -->
-                    <tag>${project.artifactId}-${project.version}</tag>
+                    <!-- tag>${project.artifactId}-${project.version}</tag>
                 </configuration>
                 <executions>
                     <execution>
@@ -467,7 +467,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin -->
             <!-- addtion ends here 22 May 2016 -->
         </plugins>
     </build>
