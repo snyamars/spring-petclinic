@@ -439,6 +439,34 @@
                 <skipStaging>true</skipStaging>
               </configuration>
             </plugin -->
+            <!--added by Sree 22 May 2016 Gitflow test -->
+            <plugin>
+                <groupId>com.e-gineering</groupId>
+                <artifactId>gitflow-helper-maven-plugin</artifactId>
+                <version>1.2.5</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <!-- These repository definitions expect id::layout::url::unique, for example
+                         release::default::https://some.server.path/content/repositories/test-releases::false
+                    -->
+                    <releaseDeploymentRepository>releases::default::>http://54.85.168.201:8081/nexus/content/repositories/releases/built_artifacts::false</releaseDeploymentRepository>
+                    <stageDeploymentRepository>stage::default::>http://54.85.168.201:8081/nexus/content/repositories/stage/built_artifacts::false</stageDeploymentRepository>
+                    <snapshotDeploymentRepository>snapshots::default::>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts::true</snapshotDeploymentRepository>
+                    <!-- The plugin will read the git branch ang git url by resolving these properties at run-time -->
+                    <!-- gitBranchProperty -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>enforce-versions</goal>
+                            <goal>retarget-deploy</goal>
+                            <goal>tag-master</goal>
+                            <goal>promote-master</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- addtion ends here 22 May 2016 -->
         </plugins>
     </build>
     <reporting>
