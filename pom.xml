@@ -422,6 +422,9 @@
               </executions>
             <configuration>
               <preparationGoals>release</preparationGoals>
+                  <checkModificationExcludes>
+                    <checkModificationExclude>pom.xml</checkModificationExclude>
+                </checkModificationExcludes>
             </configuration>
             </plugin>
             <!-- addition ended by Sree -->
