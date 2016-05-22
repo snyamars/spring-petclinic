@@ -18,7 +18,7 @@ node {
    //set the version
    sh "${mvnHome}/bin/mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER}"
    // Run the maven build
-   sh "${mvnHome}/bin/mvn clean build tag-master"
+   sh "${mvnHome}/bin/mvn clean package tag-master"
    //sh "${mvnHome}/bin/mvn clean install"
    //sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
   
