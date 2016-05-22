@@ -419,9 +419,9 @@
             <configuration>
               <preparationGoals>release</preparationGoals>
             </configuration>
-            </plugin -->
+            </plugin>
             <!-- addition ended by Sree -->
-            <plugin>
+            <!-- plugin>
               <groupId>org.sonatype.plugins</groupId>
               <artifactId>nexus-staging-maven-plugin</artifactId>
         	  <version>1.6.6</version>
