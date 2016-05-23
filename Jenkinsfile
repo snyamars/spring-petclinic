@@ -6,7 +6,9 @@ node {
   bat 'mvn compile'
   bat 'mvn test'
   bat 'mvn package'
-  bat 'mvn sonar:sonar'
+ // bat 'mvn sonar:sonar'
+  
+  step <object of type hudson.plugins.sonar.SonarRunnerBuilder>
    dir('target') {stash name: 'war', includes: 'x.war'}
    
 }
