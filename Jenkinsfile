@@ -8,10 +8,14 @@ node {
   //bat 'mvn package'
  // bat 'mvn sonar:sonar'
  
- echo "${env.user_name}"
+ properties [[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: 'Hello', description: '', name: 'PARAM_NAME']]]]
+
+ echo "${env.PARAM_NAME}"
+ echo "${env.NAME}"
+ 
  echo "${env.BUILD_NUMBER}"
- echo "${env.param1}"
- echo "${env.param2}"
+ //echo "${env.param1}"
+ //echo "${env.param2}"
   
   //step <object of type hudson.plugins.sonar.SonarRunnerBuilder>
 //   dir('target') {stash name: 'war', includes: 'x.war'}
