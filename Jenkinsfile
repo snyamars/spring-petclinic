@@ -38,7 +38,7 @@ node {
     //sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
 //}
   
-  build job: 'CDJob_3', parameters: [[$class: 'StringParameterValue', name: 'targetIPAddress'], [$class: 'StringParameterValue', name: 'artifactLocation']]
+  build job: 'CDJob_3', parameters: [[$class: 'StringParameterValue', name: 'targetIPAddress', value:"${targetIPAddress}"], [$class: 'StringParameterValue', name: 'artifactLocation', value:"${artifactLocation}"]]
  
  //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "--extra-vars warfile=${fileName}", installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
 //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '-i "52.91.71.245," --extra-vars "warfile=/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war target=52.91.71.245"', installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
