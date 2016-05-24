@@ -19,15 +19,23 @@ node {
    sh "${mvnHome}/bin/mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER}"
    // Run the maven build
    //sh "${mvnHome}/bin/mvn clean package"
-      sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
+   sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
    //sh "${mvnHome}/bin/mvn release:prepare"
   
-         sh "${mvnHome}/bin/mvn clean deploy"
+   sh "${mvnHome}/bin/mvn clean deploy"
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
   def word1 = "warfile=${fileName}"
- echo "${word1}"
+  echo "${word1}"
+  
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+
+    sh("git tag -a ${env.BUILD_NUMBER}  -m 'Jenkins'")
+    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
+}
+  
+  build job: 'CDJob_3', parameters: [[$class: 'StringParameterValue', name: '52.91.71.245'], [$class: 'StringParameterValue', name: '${fileName}']]
  
  //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "--extra-vars warfile=${fileName}", installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
 //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '-i "52.91.71.245," --extra-vars "warfile=/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war target=52.91.71.245"', installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
