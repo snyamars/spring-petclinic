@@ -8,7 +8,7 @@ node {
   //bat 'mvn package'
  // bat 'mvn sonar:sonar'
  
- //properties [[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: 'Hello', description: '', name: 'PARAM_NAME']]]]
+ properties [[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: 'Hello', description: '', name: 'PARAM_NAME']]]]
 
  echo "${env.PARAM_NAME}"
  //echo "${env.NAME}"
