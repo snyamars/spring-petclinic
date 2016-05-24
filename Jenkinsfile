@@ -7,6 +7,8 @@ node {
 //  bat 'mvn test'
   //bat 'mvn package'
  // bat 'mvn sonar:sonar'
+ 
+ echo "${user_name}"
  echo "${env.BUILD_NUMBER}"
  echo "${env.param1}"
  echo "${env.param2}"
