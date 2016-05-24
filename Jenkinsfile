@@ -8,7 +8,7 @@ node {
   //bat 'mvn package'
  // bat 'mvn sonar:sonar'
  
- echo "${env.param1}"
+ echo "$param1"
   
   //step <object of type hudson.plugins.sonar.SonarRunnerBuilder>
 //   dir('target') {stash name: 'war', includes: 'x.war'}
