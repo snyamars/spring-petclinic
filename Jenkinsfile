@@ -29,12 +29,12 @@ node {
   def word1 = "warfile=${fileName}"
   echo "${word1}"
   
-  def targetIPAddress = "${env.targetIPAddress}"
-  echo "${env.targetIPAddress}"
+  def targetIPAddress = "${targetIPAddress}"
+  echo "${targetIPAddress}"
   
   
-  properties [[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: '', name: 'targetIPAddress', value:"${targetIPAddress}"]]]]
-
+  //properties [[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: '', name: 'targetIPAddress', value:"${targetIPAddress}"]]]]
+  //properties [[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: '', name: 'param1'], [$class: 'StringParameterDefinition', defaultValue: '0', description: '', name: 'param2']]]]
   def artifactLocation ="/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
   
   //withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
