@@ -10,6 +10,8 @@ node {
  
 // properties ([$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: 'Hello', description: '', name: 'PARAM_NAME']]])
 build job: 'Receiver', parameters: [[$class: 'StringParameterValue', name: 'param1', value: "${env.BUILD_NUMBER}"]]
+
+echo "${param1}"
 // echo "${env.PARAM_NAME}"
  //echo "${env.NAME}"
  
