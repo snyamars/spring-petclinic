@@ -22,7 +22,7 @@ node {
    sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
    //sh "${mvnHome}/bin/mvn release:prepare"
   
-  sh "${mvnHome}/bin/mvn clean package"
+  //sh "${mvnHome}/bin/mvn clean package"
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
@@ -37,7 +37,7 @@ node {
   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
 
     sh("git tag -a ${env.BUILD_NUMBER}  -m 'Jenkins'")
-    sh('git push https://"${GIT_USERNAME}":"${GIT_PASSWORD}"@spring-petclinic.git --tags')
+    sh('git push https://"${GIT_USERNAME}":"${GIT_PASSWORD}"@snyamars/spring-petclinic --tags')
 }
   
  // build job: 'CDJob_3', parameters: [[$class: 'StringParameterValue', name: 'targetIPAddress', value:"${targetIPAddress}"], [$class: 'StringParameterValue', name: 'artifactLocation', value:"${artifactLocation}"]]
