@@ -36,8 +36,8 @@ node {
   
   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
 
-   // sh("git tag -a ${env.BUILD_NUMBER}  -m 'Jenkins'")
-   // sh('git push https://"${GIT_USERNAME}":"${GIT_PASSWORD}"@github.com/snyamars/spring-petclinic.git --tags')
+    sh("git tag -a ${env.BUILD_NUMBER}  -m 'Jenkins'")
+    sh('git push https://"${GIT_USERNAME}":"${GIT_PASSWORD}"@github.com/snyamars/spring-petclinic.git --tags')
 }
   
  // build job: 'CDJob_3', parameters: [[$class: 'StringParameterValue', name: 'targetIPAddress', value:"${targetIPAddress}"], [$class: 'StringParameterValue', name: 'artifactLocation', value:"${artifactLocation}"]]
