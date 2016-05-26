@@ -26,7 +26,7 @@ node {
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
-   
+   sh "cp ${fileName} /tmp/petclinic.war"
   //def targetIPAddress = "${targetIPAddress}"
   //echo "${targetIPAddress}"
   
