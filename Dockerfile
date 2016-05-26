@@ -16,4 +16,4 @@ RUN rm src/main/resources/stagemonitor.properties
 
 ADD ./stagemonitor.properties /spring-petclinic/src/main/resources/stagemonitor.properties
 
-RUN mv /spring-petclinic/target/petclinic.war /tomcat/webapps/petclinic.war &&\
+RUN mv ./petclinic.war /tomcat/webapps/petclinic.war &&\
