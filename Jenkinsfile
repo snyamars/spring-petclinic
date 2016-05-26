@@ -22,7 +22,7 @@ node {
    sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
    //sh "${mvnHome}/bin/mvn release:prepare"
   
-     //sh "${mvnHome}/bin/mvn clean package"
+     sh "${mvnHome}/bin/mvn clean package"
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
