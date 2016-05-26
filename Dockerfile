@@ -11,8 +11,9 @@ RUN mkdir /opt/aspectj && cd /opt/aspectj &&\
 ADD ./setenv.sh /tomcat/bin/setenv.sh
 
 # Build petclinic
-WORKDIR /spring-petclinic
-RUN rm src/main/resources/stagemonitor.properties
+#WORKDIR /spring-petclinic
+WORKDIR .
+#RUN rm src/main/resources/stagemonitor.properties
 
 ADD ./stagemonitor.properties /spring-petclinic/src/main/resources/stagemonitor.properties
 
