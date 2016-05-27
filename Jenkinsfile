@@ -48,7 +48,7 @@ node {
    docker.image('petclinic').withRun('-p 9988:8080 stagemonitor/petclinic')
  
  stage 'notifyKubernetes'
-   sh  "curl -H 'Content-Type: application/json' -X POST -d '{'id': 'warehouse','application': 'Warehouse Application','accesspoint': 'http://54.165.34.14:8080','containers': [{'name': 'mongod', 'replicas': 1, 'cpu': 1100, 'memory': '170M', 'port': 30071},        {'name': 'nodejs', 'replicas': 1, 'cpu': 1100, 'memory': '500M', 'port': 30064, 'image': 'snyamars007/prowi'} ]}' http://54.175.227.117:3306/step3"
+   sh  "curl -H 'Content-Type: application/json' -X POST -d '{'id': 'warehouse','application': 'Warehouse Application','accesspoint': 'http://54.165.34.14:8080','containers': [{'name': 'mongod', 'replicas': 1, 'cpu': 1100, 'memory': '170M', 'port': 30071},        {'name': 'nodejs', 'replicas': 1, 'cpu': 1100, 'memory': '500M', 'port': 30064, 'image': 'snyamars007/petclinic'} ]}' http://54.175.227.117:3306/step3"
  
 }
 
