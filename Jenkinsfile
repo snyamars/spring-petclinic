@@ -22,34 +22,31 @@ node {
    sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
    //sh "${mvnHome}/bin/mvn release:prepare"
   
-     //sh "${mvnHome}/bin/mvn clean package"
+  //sh "${mvnHome}/bin/mvn clean package"
   
    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
    echo "$fileName"
-   sh "cp ${fileName} /var/lib/jenkins/workspace/petclinic.war"
-  //def targetIPAddress = "${targetIPAddress}"
-  //echo "${targetIPAddress}"
+  def word1 = "warfile=${fileName}"
+  echo "${word1}"
   
-  stage 'tag in git'
+  def targetIPAddress = "${targetIPAddress}"
+  echo "${targetIPAddress}"
   
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
-  {
+  def artifactLocation ="/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
+  
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+
     sh("git tag -a ${env.BUILD_NUMBER}  -m 'Jenkins'")
     sh('git push https://"${GIT_USERNAME}":"${GIT_PASSWORD}"@github.com/snyamars/spring-petclinic.git --tags')
-  }
+}
   
-  stage 'docker build'
-  
-  docker.withRegistry('https://hub.docker.com/r/snyamars007', 'f6ab1d37-c2cf-4636-80b9-7745dffd4695') {
-        docker.build('petclinic').push('latest')
-  }
+ // build job: 'CDJob_3', parameters: [[$class: 'StringParameterValue', name: 'targetIPAddress', value:"${targetIPAddress}"], [$class: 'StringParameterValue', name: 'artifactLocation', value:"${artifactLocation}"]]
+ 
+ //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "--extra-vars warfile=${fileName}", installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
+//ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '-i "52.91.71.245," --extra-vars "warfile=/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war target=52.91.71.245"', installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
+//ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "-i 52.91.71.245, --extra-vars \" ${word1} target=52.91.71.245\"", installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
+ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "-i ${targetIPAddress}, --extra-vars \" ${word1} target=${targetIPAddress}\"", installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
 
- stage 'run'
-   docker.image('petclinic').withRun('-p 9988:8080 stagemonitor/petclinic')
- 
- stage 'notifyKubernetes'
-   sh  "curl -H 'Content-Type: application/json' -X POST -d '{'id': 'warehouse','application': 'Warehouse Application','accesspoint': 'http://54.165.34.14:8080','containers': [{'name': 'mongod', 'replicas': 1, 'cpu': 1100, 'memory': '170M', 'port': 30071},        {'name': 'nodejs', 'replicas': 1, 'cpu': 1100, 'memory': '500M', 'port': 30064, 'image': 'snyamars007/petclinic'} ]}' http://54.175.227.117:3306/step3"
- 
 }
 
  //input message: "Does staging look good?"
@@ -67,3 +64,4 @@ def deploy(id) {
     //sh "cp ${fileName} /tmp/petclinic.war"
     
 }
+
