@@ -51,29 +51,16 @@ node {
       sh('git push https://"${GIT_USERNAME}":"${GIT_PASSWORD}"@github.com/snyamars/spring-petclinic.git --tags')
   }
   
- // build job: 'CDJob_3', parameters: [[$class: 'StringParameterValue', name: 'targetIPAddress', value:"${targetIPAddress}"], [$class: 'StringParameterValue', name: 'artifactLocation', value:"${artifactLocation}"]]
+stage 'docker build'
+  
+  docker.withRegistry('https://hub.docker.com/r/snyamars007', 'f6ab1d37-c2cf-4636-80b9-7745dffd4695') {
+        docker.build('petclinic').push('latest')
+  }
+
+ //stage 'run'
+   //docker.image('petclinic').withRun('-p 9988:8080 stagemonitor/petclinic')
  
- //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "--extra-vars warfile=${fileName}", installation: 'ansible', inventory: '/home/ubuntu/hosts', playbook: '/home/ubuntu/devops/Ansible-playbooks/tomcat-buntu/site.yml', sudoUser: null
-//ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '-i "52.91.71.245," --extra-vars "warfile=/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war target=52.91.71.245"', installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
-//ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "-i 52.91.71.245, --extra-vars \" ${word1} target=52.91.71.245\"", installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
-stage 'Ansible Deployment'
-ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "-i ${targetIPAddress}, --extra-vars \" ${word1} target=${targetIPAddress}\"", installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
-
-}
-
- //input message: "Does staging look good?"
- stage 'Staging'
-  node {
-       echo 'Staging server looks to be alive'
-      deploy 'Staging'
-      echo "Deployed to Staging done"
-   }
-
-def deploy(id) {
-    //unstash 'war'
-    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
-     echo "$fileName"
-    //sh "cp ${fileName} /tmp/petclinic.war"
-    
-}
-
+ stage 'notifyKubernetes'
+   sh  "curl -H 'Content-Type: application/json' -X POST -d '{'id': 'warehouse','application': 'Warehouse Application','accesspoint': 'http://54.165.34.14:8080','containers': [{'name': 'mongod', 'replicas': 1, 'cpu': 1100, 'memory': '170M', 'port': 30071},        {'name': 'nodejs', 'replicas': 1, 'cpu': 1100, 'memory': '500M', 'port': 30064, 'image': 'snyamars007/petclinic'} ]}' http://54.175.227.117:3306/step3"
+ 
+}//end of node
