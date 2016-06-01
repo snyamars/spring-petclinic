@@ -18,9 +18,13 @@ node {
    //set the version
    sh "${mvnHome}/bin/mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER}"
    // Run the maven build
-   //sh "${mvnHome}/bin/mvn clean package deploy"
+   
    sh "${mvnHome}/bin/mvn release:update-versions -DautoVersionSubmodules=true"
    //sh "${mvnHome}/bin/mvn release:prepare"
+  
+  stage 'Update Nexus'
+  
+  //sh "${mvnHome}/bin/mvn clean package deploy"
   
   //sh "${mvnHome}/bin/mvn clean package"
   
@@ -37,6 +41,8 @@ node {
   
   
   def artifactLocation ="/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
+  
+  stage 'Tagging'
   
   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
   {
