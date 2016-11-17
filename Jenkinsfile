@@ -44,7 +44,7 @@ node {
   
   stage 'Git Tagging'
   
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '210b7df8e3251294b61b24eb16e2600c', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
   {
       //sh("git tag -a ${env.BUILD_NUMBER}  -m 'Jenkins'")
       sh("git tag -a ${tag_value}  -m 'Jenkins'")
@@ -57,7 +57,7 @@ node {
 //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: '-i "52.91.71.245," --extra-vars "warfile=/var/lib/jenkins/workspace/Pipe1/master/target/petclinic.war target=52.91.71.245"', installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
 //ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "-i 52.91.71.245, --extra-vars \" ${word1} target=52.91.71.245\"", installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
 stage 'Ansible Deployment'
-ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "-i ${targetIPAddress}, --extra-vars \" ${word1} target=${targetIPAddress}\"", installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
+//ansiblePlaybook credentialsId: 'e3acf4e7-93b7-44ce-9701-63cbce120125', extras: "-i ${targetIPAddress}, --extra-vars \" ${word1} target=${targetIPAddress}\"", installation: 'ansible', playbook: '/home/ubuntu/JavaStack/site.yml', sudoUser: null
 
 }
 
