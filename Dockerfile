@@ -16,5 +16,5 @@ WORKDIR .
 #RUN rm src/main/resources/stagemonitor.properties
 
 ADD ./stagemonitor.properties /spring-petclinic/src/main/resources/stagemonitor.properties
-
-RUN mv ./petclinic.war /tomcat/webapps/petclinic.war
+###Nov 19 2017
+#RUN mv ./petclinic.war /tomcat/webapps/petclinic.war
