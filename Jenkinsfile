@@ -30,9 +30,9 @@ node {
   
      //sh "${mvnHome}/bin/mvn clean package"
   
-   def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
-   echo "$fileName"
-   sh "cp ${fileName} /var/lib/jenkins/workspace/petclinic.war"
+   //def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
+   //echo "$fileName"
+   //sh "cp ${fileName} /var/lib/jenkins/workspace/petclinic.war"
   //def targetIPAddress = "${targetIPAddress}"
   //echo "${targetIPAddress}"
   
@@ -81,8 +81,8 @@ node {
 
 def deploy(id) {
     //unstash 'war'
-    def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
-     echo "$fileName"
+    //def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/target/petclinic.war"
+     //echo "$fileName"
     //sh "cp ${fileName} /tmp/petclinic.war"
     
 }
