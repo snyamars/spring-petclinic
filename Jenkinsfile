@@ -48,7 +48,7 @@ node {
   stage 'docker build'
 
        // added Nov 19 2017
-   withDockerRegistry([credentialsId: 'dockerId', url: 'https://hub.docker.com/r/snyamars007']) {
+   withDockerRegistry([credentialsId: 'dockerId', url: 'https://registry.hub.docker.com']) {
      docker.build('snyamars007/petclinic').push('latest')
       //docker.withRegistry('https://hub.docker.com', 'dockerId') {
        // docker.build('snyamars007/petclinic').push('latest')
