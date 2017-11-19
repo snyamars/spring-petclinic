@@ -52,7 +52,7 @@ node {
     // docker.build('snyamars007/petclinic').push('latest')
       //docker.withRegistry('https://registry.hub.docker.com', 'dockerId') {
        //docker.build('snyamars007/petclinic').push('latest')
-    }
+    //}
  
   //commented on Nov 19 2017  
    /**
