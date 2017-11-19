@@ -51,7 +51,7 @@ node {
    //withDockerRegistry([credentialsId: 'dockerId', url: 'https://hub.docker.com/r/snyamars007']) {
      // docker.build('petclinic').push('latest')
       docker.withRegistry('https://hub.docker.com/r/snyamars007', 'dockerId') {
-        docker.build('snyamars007/petclinic').push('latest')
+        docker.build('r/snyamars007/petclinic').push('latest')
     }
  
   //commented on Nov 19 2017  
