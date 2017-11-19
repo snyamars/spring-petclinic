@@ -48,8 +48,8 @@ node {
   stage 'docker build'
 
        // added Nov 19 2017
-   withDockerRegistry([credentialsId: 'dockerId', url: 'https://hub.docker.com/']) {
-     docker.build('snyamars007/petclinic').push('latest')
+   //withDockerRegistry([credentialsId: 'dockerId', url: 'https://hub.docker.com/']) {
+    // docker.build('snyamars007/petclinic').push('latest')
       //docker.withRegistry('https://registry.hub.docker.com', 'dockerId') {
        //docker.build('snyamars007/petclinic').push('latest')
     }
@@ -69,7 +69,7 @@ node {
  **/
    
    stage 'notifyKubernetes'
-   sh "kubectl --kubeconfig=~/.kube run spring-petclinic --image=snyamars007/petclinic:latest --port=9988"
+   sh "kubectl --kubeconfig=~/.kube run spring-petclinic --image=dockersamples/static-site:latest --port=80"
    sh "kubectl --kubeconfig=~/.kube expose deployment/spring-petclinic --type=NodePort --port=31220"
 }
 
