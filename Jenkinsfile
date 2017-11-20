@@ -69,8 +69,9 @@ node {
  **/
    
    stage 'notifyKubernetes'
-   sh "kubectl --kubeconfig=~/.kube run spring-petclinic --image=dockersamples/static-site:latest --port=80"
-   sh "kubectl --kubeconfig=~/.kube expose deployment/spring-petclinic --type=NodePort --port=31220"
+   //sh "kubectl --kubeconfig=~/.kube run spring-petclinic --image=dockersamples/static-site:latest --port=80"
+   sh "kubectl run spring-petclinic --image=dockersamples/static-site:latest --port=80"
+   sh "kubectl expose deployment/spring-petclinic --type=NodePort --port=31220"
 }
 
  //input message: "Does staging look good?"
