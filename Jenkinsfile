@@ -85,8 +85,8 @@ node {
       println("no prior deployment exists")
    }
    sh "sleep 3s"
-   sh "kubectl run --image=snyamars007/petclinic:latest spring-petclinic-test --restart=Never --port=8080"
-   sh "kubectl expose deployment spring-petclinic-test --type=NodePort "
+   sh "kubectl run --image=snyamars007/petclinic:latest spring-petclinic-test1  --port=8080"
+   sh "kubectl expose deployment spring-petclinic-test1 --type=NodePort "
 }
 
  //input message: "Does staging look good?"
