@@ -13,6 +13,7 @@
           <tag>${project.artifactId}-${project.version}</tag>
     </scm>
     <!-- added and commented by SREE May 21 2016 for gitflow test -->
+    <!--
     <distributionManagement>
          <repository>
           <id>nexus</id>
@@ -25,7 +26,7 @@
           <url>http://54.85.168.201:8081/nexus/content/repositories/snapshots/built_artifacts/</url>
          </snapshotRepository>
     </distributionManagement>
-    
+    -->
     <properties>
 
         <!-- Generic properties -->
