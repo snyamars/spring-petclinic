@@ -23,7 +23,7 @@ node {
    sh "/usr/bin/mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER}"
    
    // Run the maven build
-   //sh "${mvnHome}/bin/mvn clean package deploy"
+   sh "${mvnHome}/bin/mvn clean package deploy"
    
    sh "/usr/bin/mvn release:update-versions -DautoVersionSubmodules=true"
    //sh "${mvnHome}/bin/mvn release:prepare"
@@ -36,7 +36,7 @@ node {
   //def targetIPAddress = "${targetIPAddress}"
   //echo "${targetIPAddress}"
   
-  //stage 'tag in git'
+  stage 'tag in git'
   /**
   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
   {
@@ -45,7 +45,7 @@ node {
   }
   //commented on Nov 19 2017
   **/
-  stage 'docker build'
+   stage ('docker build'){
 
        // added Nov 19 2017
    //withDockerRegistry([credentialsId: 'dockerId', url: 'https://hub.docker.com/']) {
@@ -53,7 +53,14 @@ node {
       //docker.withRegistry('https://registry.hub.docker.com', 'dockerId') {
        //docker.build('snyamars007/petclinic').push('latest')
     //}
- 
+   
+   withCredentials([[$class: "UsernamePasswordMultiBinding", usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS', credentialsId: 'dockerId']]) {
+      sh 'docker login --username $DOCKERHUB_USER --password $DOCKERHUB_PASS'
+    }
+    def serverImage = docker.build('snyamars007/petclinic')
+    serverImage.push('latest')
+    sh 'docker logout'
+   }
   //commented on Nov 19 2017  
    /**
   docker.withRegistry('https://hub.docker.com/r/snyamars007', 'f6ab1d37-c2cf-4636-80b9-7745dffd4695') {
