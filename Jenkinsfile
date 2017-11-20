@@ -79,7 +79,11 @@ node {
    stage 'notifyKubernetes'
    //sh "kubectl --kubeconfig=~/.kube run spring-petclinic --image=dockersamples/static-site:latest --port=80"
    //sh "kubectl run spring-petclinic --image=dockersamples/static-site:latest --port=80"
-   sh "kubectl delete deployment spring-petclinic-new"
+   try{
+      sh "kubectl delete deployment spring-petclinic-new"
+   }catch(e){
+      println("no prior deployment exists")
+   }
    sh "sleep 3s"
    sh "kubectl run --image=snyamars007/petclinic:latest spring-petclinic-test --restart=Never --port=8080"
    sh "kubectl expose deployment spring-petclinic-test --type=NodePort "
