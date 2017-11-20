@@ -81,8 +81,8 @@ node {
    //sh "kubectl run spring-petclinic --image=dockersamples/static-site:latest --port=80"
    sh "kubectl delete deployment spring-petclinic-new"
    sh "sleep 3s"
-   sh "kubectl run spring-petclinic-new --image=snyamars007/petclinic:latest --restart=Never --port=8080"
-   sh "kubectl expose deployment/spring-petclinic-new --type=NodePort "
+   sh "kubectl run --image=snyamars007/petclinic:latest spring-petclinic-test --restart=Never --port=8080"
+   sh "kubectl expose deployment spring-petclinic-test --type=NodePort "
 }
 
  //input message: "Does staging look good?"
