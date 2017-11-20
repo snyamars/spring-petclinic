@@ -23,7 +23,8 @@ node {
    sh "/usr/bin/mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER}"
    
    // Run the maven build
-   sh "/usr/bin/mvn clean package deploy"
+   //sh "/usr/bin/mvn clean package deploy"
+   sh "/usr/bin/mvn clean package"
    
    sh "/usr/bin/mvn release:update-versions -DautoVersionSubmodules=true"
    //sh "${mvnHome}/bin/mvn release:prepare"
