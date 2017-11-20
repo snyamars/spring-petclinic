@@ -1,5 +1,7 @@
 FROM tutum/tomcat
 
+EXPOSE 8080 9966
+
 RUN rm -rf /tomcat/webapps/*
 
 RUN apt-get update && apt-get install
