@@ -80,7 +80,7 @@ node {
    //sh "kubectl --kubeconfig=~/.kube run spring-petclinic --image=dockersamples/static-site:latest --port=80"
    //sh "kubectl run spring-petclinic --image=dockersamples/static-site:latest --port=80"
    try{
-      sh "kubectl delete deployment spring-petclinic-new"
+      sh "kubectl delete deployment spring-petclinic-test1"
    }catch(e){
       println("no prior deployment exists")
    }
