@@ -46,6 +46,7 @@ public abstract class IPUtil {
         String name = "127.0.0.1"; //added for testing purpose
         System.out.println("name is .. " + name);
         String jdbcStmt = "select * from dbtable";
+        
         for (T entity : entities) {
             if (entity.getId() == entityId && entityClass.isInstance(entity)) {
                 return entity;
