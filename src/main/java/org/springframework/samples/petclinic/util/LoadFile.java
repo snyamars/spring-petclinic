@@ -1,3 +1,4 @@
+package org.springframework.samples.petclinic.util;
 
 
 import java.io.BufferedReader;
