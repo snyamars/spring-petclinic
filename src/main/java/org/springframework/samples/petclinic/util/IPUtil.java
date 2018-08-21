@@ -43,8 +43,9 @@ public abstract class IPUtil {
      */
     public static <T extends BaseEntity> T getById(Collection<T> entities, Class<T> entityClass, int entityId)
         throws ObjectRetrievalFailureException {
-        String name = 127.0.0.1; //added for testing purpose
+        String name = "127.0.0.1"; //added for testing purpose
         System.out.println("name is .. " + name);
+        String jdbcStmt = "select * from dbtable";
         for (T entity : entities) {
             if (entity.getId() == entityId && entityClass.isInstance(entity)) {
                 return entity;
